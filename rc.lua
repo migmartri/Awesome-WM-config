@@ -36,12 +36,12 @@ layouts =
 {
   awful.layout.suit.floating,
   awful.layout.suit.tile,
-  awful.layout.suit.tile.left,
-  awful.layout.suit.tile.bottom,
-  awful.layout.suit.tile.top,
-  awful.layout.suit.fair,
-  awful.layout.suit.fair.horizontal,
-  awful.layout.suit.magnifier,
+  --awful.layout.suit.tile.left,
+  --awful.layout.suit.tile.bottom,
+  --awful.layout.suit.tile.top,
+  --awful.layout.suit.fair,
+  --awful.layout.suit.fair.horizontal,
+  --awful.layout.suit.magnifier,
   awful.layout.suit.max
 }
 -- }}}
@@ -63,7 +63,7 @@ layouts =
 --}
 tags = {
  names  = { "Workstation", "Browsing", "Email", "Music", "PlayGround" },
- layout = { layouts[2], layouts[1], layouts[1], layouts[9], layouts[1], layouts[1] }}
+ layout = { layouts[2], layouts[1], layouts[1], layouts[3], layouts[1] }}
 for s = 1, screen.count() do
   tags[s] = awful.tag(tags.names, s, tags.layout)
 end
@@ -429,7 +429,8 @@ for s = 1, screencount do
       space,
       mylayoutbox[s],
       spacer,
-      mysystray,
+      s == 1 and mysystray or nil,
+      --mysystray,
       mytasklist[s],
       layout = awful.widget.layout.horizontal.rightleft
     }
